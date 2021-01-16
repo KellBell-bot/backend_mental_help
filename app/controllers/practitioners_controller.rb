@@ -5,7 +5,7 @@ class PractitionersController < ApplicationController
   def index
     @practitioners = Practitioner.all
 
-    render json: @practitioners
+    render json: @practitioners, methods: [:filter_issues, :reviews]
   end
 
   # GET /practitioners/1

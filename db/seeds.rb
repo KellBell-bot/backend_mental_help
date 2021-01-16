@@ -10,6 +10,8 @@ require 'roo'
 PractitionerIssue.destroy_all
 Practitioner.destroy_all
 Issue.destroy_all
+User.destroy_all
+Review.destroy_all
 
 
 puts "Importing data"
@@ -32,3 +34,12 @@ puts "Importing data"
         end
       end
     end
+
+user1 = User.create(name: "Edward Cullin", email: "edwards@email.com", password_digest: "asdfg")
+user2 = User.create(name: "Billy Bye", email: "billys@email.com", password_digest: "asdfg")
+user3 = User.create(name: "Bella Thorne", email: "bellas@email.com", password_digest: "asdfg")
+user4 = User.create(name: "Ida Wells", email: "idas@email.com", password_digest: "asdfg")
+
+# practitioner1= Practitioner.first
+
+review1= Review.create(comment: "I really liked enjoyed my session, I felt heard and understood, The office staff was nice as well", user_id: user4.id, practitioner_id: Practitioner.first.id)
