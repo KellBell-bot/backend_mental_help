@@ -4,7 +4,6 @@ class CreatePractitioners < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :title
       t.text :description
-      t.text :issues, array: true, default: []
       t.string :zip_code
       t.string :phone
       t.boolean :visited

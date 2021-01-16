@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_234824) do
+ActiveRecord::Schema.define(version: 2021_01_15_201438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,16 +25,32 @@ ActiveRecord::Schema.define(version: 2021_01_14_234824) do
     t.index ["user_id"], name: "index_appointment_notes_on_user_id"
   end
 
+  create_table "issues", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "practitioner_issues", force: :cascade do |t|
+    t.bigint "practitioner_id", null: false
+    t.bigint "issue_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_id"], name: "index_practitioner_issues_on_issue_id"
+    t.index ["practitioner_id"], name: "index_practitioner_issues_on_practitioner_id"
+  end
+
   create_table "practitioners", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.text "description"
-    t.text "issues", default: [], array: true
     t.string "zip_code"
     t.string "phone"
     t.boolean "visited"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.string "fee"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -57,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_01_14_234824) do
 
   add_foreign_key "appointment_notes", "practitioners"
   add_foreign_key "appointment_notes", "users"
+  add_foreign_key "practitioner_issues", "issues"
+  add_foreign_key "practitioner_issues", "practitioners"
   add_foreign_key "reviews", "practitioners"
   add_foreign_key "reviews", "users"
 end
