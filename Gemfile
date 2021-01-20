@@ -42,3 +42,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "roo", "~> 2.8"
+
+gem 'faker', '~> 2.15', '>= 2.15.1'

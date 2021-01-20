@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'roo'
+require 'faker'
 PractitionerIssue.destroy_all
 Practitioner.destroy_all
 Issue.destroy_all
@@ -36,10 +37,19 @@ puts "Importing data"
     end
 
 user1 = User.create(name: "Edward Cullin", email: "edwards@email.com", password_digest: "asdfg")
-user2 = User.create(name: "Billy Bye", email: "billys@email.com", password_digest: "asdfg")
+user2 = User.create(name: "Bill Nye", email: "billys@email.com", password_digest: "asdfg")
 user3 = User.create(name: "Bella Thorne", email: "bellas@email.com", password_digest: "asdfg")
 user4 = User.create(name: "Ida Wells", email: "idas@email.com", password_digest: "asdfg")
 
-# practitioner1= Practitioner.first
-
-review1= Review.create(comment: "I really liked enjoyed my session, I felt heard and understood, The office staff was nice as well", user_id: user4.id, practitioner_id: Practitioner.first.id)
+10.times do 
+  User.create(
+        name: Faker::Name.unique.name, 
+        email: Faker::Internet.email, 
+        password_digest: "asdfg" 
+      )
+    end
+    
+review1= Review.create(comment: "These sessions helped me face fears I thought I would never concur. I will recommend this practitioner to any and everyone.", user_id: user4.id, practitioner_id: Practitioner.first.id)
+review1= Review.create(comment: "I really enjoyed my session, I felt heard and understood, The office staff was nice as well", user_id: user3.id, practitioner_id: Practitioner.last.id)
+review1= Review.create(comment: "The office staff was not well organized, I had to send my insurance information 3 times!", user_id: user3.id, practitioner_id: Practitioner.first.id)
+review1= Review.create(comment: "This practitioner is awesome sauce. They were able to tap in to my problems and give me assignments to work on the issues. I was albe to talk to a family member that I havent been in contact with for 10 years! Thank you!", user_id: user2.id, practitioner_id: Practitioner.last.id)
