@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users, methods: [:filter_reviews], except: [:password_digest]
+    render json: @users, include: :appointment_notes, methods: [:filter_reviews], except: [:password_digest]
   end
 
   # POST /users

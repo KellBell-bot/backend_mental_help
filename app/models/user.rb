@@ -12,4 +12,8 @@ class User < ApplicationRecord
     def filter_reviews
         self.reviews.map{|review| {comment: review.comment, practitioner_id: review.practitioner_id}}
     end
+
+    # def filter_notes
+    #     self.appointment_notes.map{|note| {title: note.title, notes: notes.notes}}
+    # end
 end
