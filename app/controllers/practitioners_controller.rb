@@ -10,7 +10,8 @@ class PractitionersController < ApplicationController
 
   # GET /practitioners/1
   def show
-    render json: @practitioner
+    
+    render json: @practitioner, methods: [:filter_issues, :reviews]
   end
 
   # POST /practitioners
