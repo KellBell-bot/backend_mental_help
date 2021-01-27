@@ -46,6 +46,6 @@ class AppointmentNotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_note_params
-      params.require(:appointment_note).permit(:notes, :user_id, :practitioner_id)
+      params.require(:appointment_note).permit(:title, :notes, :user_id)
     end
 end

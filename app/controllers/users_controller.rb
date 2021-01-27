@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     render json: @users, include: :appointment_notes, methods: [:filter_reviews], except: [:password_digest]
   end
 
+  def show
+    @user= User.find(params[:id])
+    render json: @user, include: :appointment_notes, methods: [:filter_reviews], except: [:password_digest]
+  
+  end
+
   # POST /users
   def create
     @user = User.find_by(email: params[:email])
