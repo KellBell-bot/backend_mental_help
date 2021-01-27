@@ -13,6 +13,7 @@ Practitioner.destroy_all
 Issue.destroy_all
 User.destroy_all
 Review.destroy_all
+AppointmentNote.destroy_all
 
 
 puts "Importing data"
@@ -53,3 +54,8 @@ review1= Review.create(comment: "These sessions helped me face fears I thought I
 review1= Review.create(comment: "I really enjoyed my session, I felt heard and understood, The office staff was nice as well", user_id: user3.id, practitioner_id: Practitioner.last.id)
 review1= Review.create(comment: "The office staff was not well organized, I had to send my insurance information 3 times!", user_id: user3.id, practitioner_id: Practitioner.first.id)
 review1= Review.create(comment: "This practitioner is awesome sauce. They were able to tap in to my problems and give me assignments to work on the issues. I was albe to talk to a family member that I havent been in contact with for 10 years! Thank you!", user_id: user2.id, practitioner_id: Practitioner.last.id)
+
+note1=AppointmentNote.create(title: "Appointment 2/14/2020", notes: "I need to work on being more positive. Start your days with a positive thought", user_id: user3.id)
+note2=AppointmentNote.create(title: "Appointment 5/14/2020", notes: "Confidence is there but work on speaking more. Start your days with a positive thought", user_id: user3.id)
+note3=AppointmentNote.create(title: "Appointment 8/14/2020", notes: "Talk to mom about thanksgiving and why you were upset. Things i was upset about: the money, the way she asked was triggering", user_id: user3.id)
+note4=AppointmentNote.create(title: "Appointment 1/14/2021", notes: "Talk to HR about your options. Remember to have evidence", user_id: user2.id)

@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users, methods: [:filter_reviews], except: [:password_digest]
+    render json: @users, include: :appointment_notes, methods: [:filter_reviews], except: [:password_digest]
+  end
+
+  def show
+    @user= User.find(params[:id])
+    render json: @user, include: :appointment_notes, methods: [:filter_reviews], except: [:password_digest]
+  
   end
 
   # POST /users
@@ -14,7 +20,7 @@ class UsersController < ApplicationController
 
     if @user
       session[:user_id]= @user.id
-      render json: @user, methods: [:filter_reviews], location: @user
+      render json: @user, include: :appointment_notes, methods: [:filter_reviews], location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
